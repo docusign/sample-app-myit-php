@@ -1,0 +1,35 @@
+.checkbox {
+  label {
+    display: block;
+    position: relative;
+    height: 18px;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  label:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  label:before {
+    background: url("../../img/checkbox-unchecked.png") left center no-repeat;
+    margin-top: 2px;
+  }
+
+  input[type="checkbox"]:checked + label:before {
+    background: url("../../img/checkbox-checked.png") left center no-repeat;
+  }
+}

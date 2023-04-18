@@ -1,0 +1,44 @@
+.modal-dialog {
+  max-width: 520px;
+  .modal-content {
+    background: #292929;
+  }
+
+  .btn-close {
+    background: transparent url("../../img/close.png") center/1.5em auto
+      no-repeat;
+  }
+
+  .modal-header {
+    border: none;
+  }
+
+  .modal-body {
+    padding: 0 40px 0 40px;
+  }
+
+  .modal-footer {
+    border: none;
+    > button {
+      margin: auto;
+    }
+
+    padding: 20px;
+  }
+
+  .modal-description {
+    color: #d1d1d1;
+  }
+
+  .modal-title {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .modal-description {
+    text-align: center;
+  }
+
+  .modal-img-wrapper {
+    margin-bottom: 32px;
+  }
+}

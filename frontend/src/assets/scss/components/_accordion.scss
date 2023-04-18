@@ -1,0 +1,17 @@
+.accordion {
+  .accordion-button {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+
+    width: auto;
+
+    &::after {
+      margin-left: 16px;
+    }
+  }
+
+  .accordion-item {
+    border: none;
+  }
+}

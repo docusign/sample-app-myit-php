@@ -1,0 +1,73 @@
+.equipment-and-software-approval-page {
+  background-color: #181818;
+  padding: 28px 0 50px 0;
+
+  .request-form-card {
+    //investigate more accurate approach
+    min-height: 100vh;
+  }
+
+  .wizard-holder {
+    background: #292929;
+    border-radius: 8px;
+
+    padding: 24px;
+  }
+
+  .recipient-wrapper {
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+    .btn {
+      &.btn-img {
+        margin: 0 8px;
+        padding: 0;
+      }
+    }
+  }
+
+  .card-header {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+  }
+
+  .card-body {
+    min-height: 45vh;
+  }
+
+  .employee-assignments-wrapper {
+    margin-bottom: 24px;
+
+    h3 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 120%;
+
+      margin-bottom: 4px;
+      border-bottom: solid 1px #5d5d5d;
+    }
+
+    .employee-assignments-fields {
+      margin-top: 12px;
+    }
+  }
+
+  .description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+
+    color: #a3a3a3;
+  }
+
+  .badge.bg-dark {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #e8e8e8;
+    background: #3e3e3e;
+    border-radius: 4px;
+  }
+}

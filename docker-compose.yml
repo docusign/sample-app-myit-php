@@ -1,0 +1,72 @@
+version: '3'
+services:
+  nginx:
+    platform: linux/amd64
+    image: nginx:1.23.2-alpine
+    restart: on-failure:5
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./infra/nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./infra/nginx/certbot/www:/var/www/certbot:ro
+      - ./infra/nginx/certbot/conf/:/etc/nginx/ssl/:ro
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./infra/nginx/certbot/www:/var/www/certbot:rw
+      - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
+  frontend:
+    platform: linux/amd64
+    restart: on-failure:5
+    image: mysmapp.azurecr.io/my-it-frontend:latest
+
+  back-php:
+    platform: linux/amd64
+    restart: on-failure:5
+    image: mysmapp.azurecr.io/my-it-backend-php:latest
+    container_name: myit_php
+    links:
+      - mysql
+
+  back-nginx:
+    platform: linux/amd64
+    restart: on-failure:5
+    image: mysmapp.azurecr.io/my-it-backend-nginx:latest
+    container_name: back-nginx
+    links:
+      - back-php
+  
+  back-node:
+    restart: on-failure:5
+    platform: linux/amd64
+    image: mysmapp.azurecr.io/my-it-backend-node:latest
+    container_name: back-node
+    ports:
+      - 3001:3001
+      
+  redis:
+    restart: on-failure:5
+    platform: linux/amd64
+    image: redis:latest
+    container_name: myit_redis
+    hostname: redis_host
+
+  mysql:
+    restart: on-failure:5
+    platform: linux/amd64
+    image: mysql:5.7
+    hostname: database_host
+    container_name: myit_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3310:3306"
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+    db:

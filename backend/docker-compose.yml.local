@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: myit_php
+    volumes:
+      - ./:/var/www/html
+    links:
+      - mysql
+
+  nginx:
+    image: nginx:1.21.6-alpine
+    container_name: myit_nginx
+    links:
+      - php
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/http.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/var/www/html/public
+    expose:
+      - 80
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    hostname: database_host
+    container_name: myit_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3310:3306"
+    volumes:
+      - db:/var/lib/mysql
+
+  node:
+      build:
+        context: .
+        dockerfile: ./docker/node/node.Dockerfile
+      restart: always
+      container_name: myit_node
+      hostname: node_host
+      tty: true
+      links:
+        - redis
+      volumes:
+        - ./sockets:/var/www/html
+      ports:
+        - "3001:3001"
+      expose:
+        - 3001
+
+  redis:
+    image: redis:latest
+    restart: always
+    container_name: myit_redis
+    hostname: redis_host
+    command: >
+      --requirepass ${REDIS_PASSWORD}
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+volumes:
+    db:

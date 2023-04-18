@@ -1,0 +1,11 @@
+{
+  "ApplicationName": "My IT",
+  "GitHubLink": "GitHub Source",
+  "Copyright": "© 2022 DocuSign Inc.",
+  "LoaderMessage": "Please wait, operation is in progress...",
+  "ApiDecription": {
+    "Title": "Behind the scenes",
+    "SeeMore": "See details"
+  },
+  "UnsavedChangesMessage": "There are some unsaved changes on the page. Are you sure you want to leave?"
+}

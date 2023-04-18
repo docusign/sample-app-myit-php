@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: false
+  gather_facts: no
+  remote_user: smappuser
+  vars_files:
+    - vars.yaml
+  roles: 
+    - cerbot-renew
+

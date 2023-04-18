@@ -1,0 +1,30 @@
+.table-holder {
+  overflow: auto;
+  @include media-breakpoint-up(lg) {
+    overflow: inherit;
+  }
+}
+
+.table {
+  line-height: 28px;
+  min-width: 1091px;
+  @include media-breakpoint-up(lg) {
+    min-width: auto;
+  }
+
+  th {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 120%;
+
+    text-transform: uppercase;
+    color: #a3a3a3;
+  }
+
+  td {
+    font-weight: 400;
+    font-size: 14px;
+
+    color: #d1d1d1;
+  }
+}

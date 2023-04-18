@@ -1,0 +1,100 @@
+.home-page {
+  .features-section {
+    padding: 20px 0;
+  }
+
+  .title-section {
+    text-align: center;
+    padding: 52px 0;
+
+    .h1 {
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 120%;
+      margin-bottom: 20px;
+    }
+
+    .sub-title {
+      width: 55%;
+      margin: auto;
+
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 120%;
+
+      opacity: 0.9;
+    }
+  }
+
+  .cta-section {
+    padding: 45px 0;
+
+    .cta-title {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 120%;
+
+      margin-bottom: 24px;
+    }
+
+    .cta-button-holder {
+      margin-bottom: 50px;
+
+      .btn {
+        margin: 0 10px 20px;
+        @include media-breakpoint-up(md) {
+          margin: 0 15px;
+        }
+      }
+      .cta-btn-1 {
+        width: 350px;
+      }
+    }
+
+    .cta-description {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+
+      max-width: 510px;
+      margin: 0 auto 28px auto;
+    }
+  }
+
+  .resources-section {
+    padding: 45px 0 100px 0;
+
+    .resources-title {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 120%;
+
+      margin-bottom: 24px;
+    }
+
+    .resources-list {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+
+      .resources-list-item {
+        display: flex;
+      }
+      .resources-list-link {
+        cursor: pointer;
+        padding: 10px;
+        color: $success;
+
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+
+        text-decoration-line: none;
+
+        .img-link {
+          margin: 4px 4px 6px 4px;
+        }
+      }
+    }
+  }
+}

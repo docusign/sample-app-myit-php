@@ -1,0 +1,109 @@
+.employee-monitoring-page {
+  background-color: #181818;
+  padding: 28px 0 50px 0;
+
+  .request-form-card {
+    //investigate more accurate approach
+    min-height: 100vh;
+  }
+  .alerts-card,
+  .dashboard-card {
+    background: #292929;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  .alerts-card-header,
+  .dashboard-card-header {
+    padding: 8px;
+  }
+
+  .dashboard-card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .alerts-card-body,
+  .dashboard-card-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      background-color: #292929;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #747474;
+      border-radius: 8px;
+    }
+  }
+
+  .alerts-card-body {
+    max-height: 138px;
+  }
+
+  .dashboard-card-body {
+    max-height: 45vh;
+  }
+
+  .alert-wrapper {
+    padding: 8px;
+    margin: 0 8px 0 0;
+    border-bottom: solid 1px #3e3e3e;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+
+    color: #a3a3a3;
+  }
+
+  .alert-wrapper:first-child {
+    border-top: solid 1px #3e3e3e;
+  }
+
+  .dashboard-user-wrapper {
+    margin: 8px;
+  }
+
+  .dashboard-user-header {
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #5d5d5d;
+  }
+
+  .dashboard-user-field {
+    margin-bottom: 16px;
+  }
+
+  .dashboard-user-field-label {
+    margin-bottom: 4px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+
+    color: #a3a3a3;
+  }
+
+  .dashboard-user-field-value {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+
+    color: #e8e8e8;
+  }
+
+  .badge.bg-dark {
+    margin: 2px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #e8e8e8;
+    background: #3e3e3e;
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,29 @@
+.bulk-employee-permission-profile-modification {
+  background-color: #181818;
+  padding: 28px 0 50px 0;
+
+  .request-form-card {
+    //investigate more accurate approach
+    min-height: 100vh;
+  }
+
+  .permission-assignments-holder {
+    background: #292929;
+    border-radius: 8px;
+
+    padding: 24px;
+  }
+
+  .card-body {
+    min-height: 45vh;
+  }
+
+  .is-dirty {
+    background: #3e3e3e;
+
+    .react-select__control {
+      background: #3e3e3e;
+      border-color: #5d5d5d;
+    }
+  }
+}
