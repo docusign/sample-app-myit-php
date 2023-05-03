@@ -2,25 +2,25 @@
   "Header1": "MyIT Sample Application",
   "Header2": "Discover the power of DocuSign APIs and how they can be used in the IT industry.",
   "Footer1": "DocuSign: It's time to agree better",
-  "Footer2": "<div style='white-space: nowrap;'><p>DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.</p></div>",
+  "Footer2": "<div style='white-space: nowrap;'><div class='text-center'><p>DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.</p></div></div>",
   "SandBoxButton": "Create Developer Account",
   "LearnMoreButton": "Learn More",
   "Card1": {
     "Title": "Equipment and software approval",
     "Description": "Assign software and equipment to your employees.",
-    "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4><ul class='custom-list'><li>Embedded signing and sending</li><li>Conditional recipients</li><li>Bulk sending</li></ul></div>",
+    "Features": "<div class='text-center'><p style='padding-top: 20px'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></p></div><ul class='custom-list'><li>Embedded signing and sending</li><li>Conditional recipients</li><li>Bulk sending</li></ul>",
     "Button": "Get Started"
   },
   "Card2": {
     "Title": "Bulk employee permission profile modification",
     "Description": "Update your employees’ permission profiles and software and equipment assignments.",
-    "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4><ul class='custom-list'><li>Modifying permission profiles</li><li>Creating permission profiles</li><li>Deleting permission profiles</li></ul></div>",
+    "Features": "<div class='text-center'><p style='padding-top: 20px'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></p></div><ul class='custom-list'><li>Modifying permission profiles</li><li>Creating permission profiles</li><li>Deleting permission profiles</li></ul>",
     "Button": "Get Started"
   },
   "Card3": {
     "Title": "Employee monitoring",
     "Description": "See each employee’s permission profile, equipment and software assignments, and all \"Monitor\" alerts.",
-    "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4><ul class='custom-list'><li>Retrieve monitoring data</li><li>Monitor API for an organization</li><li>Bulk export user data</li></ul></div>",
+    "Features": "<div class='text-center'><p style='padding-top: 20px'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></p></div><ul class='custom-list'><li>Retrieve monitoring data</li><li>Monitor API for an organization</li><li>Bulk export user data</li></ul>",
     "Button": "Get Started"
   },
   "Resources": {
