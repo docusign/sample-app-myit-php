@@ -39,7 +39,7 @@ Create a copy of the file backend/.env.example, save the copy as backend/.env, a
 
 ## Installation
 
-- ### Backend
+### Backend
 
 - #### Environment
 
@@ -68,7 +68,7 @@ Install database structure
 
 Configure dependencies, execute following commands in php container:
 
-- Dependency for authentication
+Dependency for authentication
 
 ```shell
     php artisan passport:install
