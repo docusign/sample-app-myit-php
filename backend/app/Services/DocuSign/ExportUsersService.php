@@ -20,7 +20,7 @@ class ExportUsersService
         'Name',
         'Email',
         'Permission profile',
-        'Equipments',
+        'Equipment',
         'Software',
     ];
 
