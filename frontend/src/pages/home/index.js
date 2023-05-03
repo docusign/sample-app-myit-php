@@ -32,7 +32,7 @@ export const Home = () => {
   const resourceList = [
     {
       name: t("Resources.PhpSignatureSdk"),
-      href: "https://developers.docusign.com/docs/esign-rest-api/sdk-tools/php/",
+      href: "https://developers.docusign.com/docs/esign-rest-api/sdks/php/",
     },
     {
       name: t("Resources.PhpAdminSdk"),
