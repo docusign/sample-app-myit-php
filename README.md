@@ -39,24 +39,24 @@ Create a copy of the file backend/.env.example, save the copy as backend/.env, a
 
 ## Installation
 
-### - Backend
+- ### Backend
 
-#### - Environment
+- #### Environment
 
 Copy `backend/docker-compose.yml.local` to `backend/docker-compose.yml` and run a command `docker-compose up -d`.
 
-#### - Packages installation
+- #### Packages installation
 
 Enter a php container, by command execution `docker exec -ti myit_php /bin/bash` 
 and install composer dependencies via `composer install` command.
 
-#### - Setting application key
+- #### Setting application key
 
 ```shell
     php artisan key:generate
 ```
 
-#### - Database
+- #### Database
 
 Install database structure
 
@@ -64,7 +64,7 @@ Install database structure
     php artisan migrate --seed
 ```
 
-#### - Dependency configuration
+- #### Dependency configuration
 
 Configure dependencies, execute following commands in php container:
 
