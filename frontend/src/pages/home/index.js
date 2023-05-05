@@ -50,7 +50,7 @@ export const Home = () => {
           title={parse(t("Card1.Title"))}
           description={parse(t("Card1.Description"))}
           featuresDescription={parse(t("Card1.Features"))}
-          buttonTitle={t("Card1.Button")}
+          buttonTitle={parse(t("Card1.Button"))}
           canClick={appState.loading === LOADING_STATE_IDLE}
           onClick={(event) =>
             handleClick(event, "/equipment_and_software_approval")
@@ -72,7 +72,7 @@ export const Home = () => {
           title={parse(t("Card3.Title"))}
           description={parse(t("Card3.Description"))}
           featuresDescription={parse(t("Card3.Features"))}
-          buttonTitle={t("Card3.Button")}
+          buttonTitle={parse(t("Card3.Button"))}
           canClick={appState.loading === LOADING_STATE_IDLE}
           onClick={(event) => handleClick(event, "/employee_monitoring")}
         />
