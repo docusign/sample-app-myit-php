@@ -2,14 +2,14 @@
   "Header1": "MyIT Sample Application",
   "Header2": "Discover the power of DocuSign APIs and how they can be used in the IT industry.",
   "Footer1": "DocuSign: It's time to agree better",
-  "Footer2": "<div style='white-space: nowrap; text-align: center;'><p>DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.</p></div>",
+  "Footer2": "<div style='white-space: nowrap;'><span style='margin-left: -100%; margin-right: -100%; text-align: center;'>DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.</span></div>",
   "SandBoxButton": "Create Developer Account",
   "LearnMoreButton": "Learn More",
   "Card1": {
     "Title": "Equipment and software approval",
     "Description": "Assign software and equipment to your employees.",
     "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></div><ul class='custom-list'><li>Embedded signing and sending</li><li>Conditional recipients</li><li>Bulk sending</li></ul>",
-    "Button": "<p style='padding-top: 20px'>Get Started</p>"
+    "Button": "<p style='margin-top: 60px;'>Get Started</p>"
   },
   "Card2": {
     "Title": "Bulk employee permission profile modification",
@@ -21,7 +21,7 @@
     "Title": "Employee monitoring",
     "Description": "See each employee’s permission profile, equipment and software assignments, and all \"Monitor\" alerts.",
     "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></div><ul class='custom-list'><li>Retrieve monitoring data</li><li>Monitor API for an organization</li><li>Bulk export user data</li></ul>",
-    "Button": "<p style='padding-top: 20px'>Get Started</p>"
+    "Button": "<p style='margin-top: 50px;'>Get Started</p>"
   },
   "Resources": {
     "Title": "Resources",
