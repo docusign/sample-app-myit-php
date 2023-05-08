@@ -7,7 +7,7 @@
   "LearnMoreButton": "Learn More",
   "Card1": {
     "Title": "Equipment and software approval",
-    "Description": "<p style='margin-top: 50px;'>Assign software and equipment to your employees.</p>",
+    "Description": "<p style='margin-top: 33px;'>Assign software and equipment to your employees.</p>",
     "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></div><ul class='custom-list'><li>Embedded signing and sending</li><li>Conditional recipients</li><li>Bulk sending</li></ul>",
     "Button": "Get Started"
   },
@@ -19,7 +19,7 @@
   },
   "Card3": {
     "Title": "Employee monitoring",
-    "Description": "<p style='margin-top: 50px;'>See each employee’s permission profile, equipment and software assignments, and all \"Monitor\" alerts.</p>",
+    "Description": "<p style='margin-top: 38px;'>See each employee’s permission profile, equipment and software assignments, and all \"Monitor\" alerts.</p>",
     "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>DocuSign Features</h4></div><ul class='custom-list'><li>Retrieve monitoring data</li><li>Monitor API for an organization</li><li>Bulk export user data</li></ul>",
     "Button": "Get Started"
   },
