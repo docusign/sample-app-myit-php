@@ -6,14 +6,9 @@ use App\Enums\EventsTypesEnum;
 use App\Mappers\EventsMapper;
 use App\Models\Employee;
 use App\Models\Envelope;
-use App\Services\CurrentUser;
-use App\Services\DocuSign\Cache\EnvelopesRecipientsCacheService;
-use App\Services\EmployeeService;
-use Carbon\Carbon;
 use DocuSign\Monitor\Api\DataSetApi;
 use DocuSign\Monitor\Client\ApiException;
-use DocuSign\Monitor\Model\AggregateResult;
-use DocuSign\Monitor\Model\WebQuery;
+use DocuSign\Monitor\Model\CursoredResult;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\CircularDependencyException;
 use Illuminate\Support\Arr;
@@ -28,11 +23,6 @@ use Psr\Container\NotFoundExceptionInterface;
 class EventResolver extends BaseMonitorService
 {
     /**
-     * Limit of events
-     */
-    protected const EVENTS_LIMIT = 1000;
-
-    /**
      * Get monitor alerts
      *
      * @return array
@@ -45,23 +35,11 @@ class EventResolver extends BaseMonitorService
         $dataSetApi = new DataSetApi($this->apiClient);
         $users = $this->getUsers();
 
-        $result = $dataSetApi->postWebQuery('monitor', '2.0', $this->createOptions());
+        $result = $dataSetApi->getStream('monitor', '2.0');
 
         $events = $this->filterEvents($this->parseResponse($result), $users);
 
         return $this->mapEvents($events, $users);
-    }
-
-    /**
-     * Create options
-     *
-     * @return WebQuery
-     */
-    protected function createOptions(): WebQuery
-    {
-        return app(WebQuery::class)
-            ->setFilters($this->getFilters())
-            ->setAggregations($this->getAggregations());
     }
 
     /**
@@ -90,9 +68,41 @@ class EventResolver extends BaseMonitorService
      */
     protected function filterEvents(array $events, array $users): array
     {
+        $events = $this->filterEventsByTime($events);
+        $events = $this->filterEventsByAccountId($events);
         $events = $this->filterEventsByActions($events);
 
         return $this->filterByEntities($events, $users);
+    }
+
+    /**
+     * Filter events by time
+     *
+     * @param array $events
+     * @return array
+     * @throws BindingResolutionException
+     * @throws CircularDependencyException
+     */
+    protected static function filterEventsByTime(array $events): array
+    {
+        return array_filter($events, function (array $event) {
+            return strtotime("-1 hour") <= strtotime($event['timestamp']);
+        });
+    }
+
+    /**
+     * Filter events by account id
+     *
+     * @param array $events
+     * @return array
+     * @throws BindingResolutionException
+     * @throws CircularDependencyException
+     */
+    protected static function filterEventsByAccountId(array $events): array
+    {
+        return array_filter($events, function (array $event) {
+            return config('settings.docusign.account_id') == $event['accountId'];
+        });
     }
 
     /**
@@ -156,61 +166,13 @@ class EventResolver extends BaseMonitorService
     }
 
     /**
-     * Get filters
-     *
-     * @return object[]
-     */
-    protected function getFilters(): array
-    {
-        $dateFilter      = [
-            'FilterName' => 'Time',
-            'BeginTime'  => Carbon::parse(app(CurrentUser::class)->getToken()->created_at)->startOfDay()->format('Y-m-d H:i:s'),
-            'EndTime'    => now()->endOfDay()->format('Y-m-d H:i:s'),
-        ];
-        $accountIdFilter = [
-            'FilterName' => 'Has',
-            'ColumnName' => 'AccountId',
-            'Value'      => config('settings.docusign.account_id'),
-        ];
-        $objectsFilter   = [
-            'FilterName' => 'In',
-            'ColumnName' => 'Object',
-            'Values'     => ['Envelope', 'User', 'Recipient'],
-        ];
-
-        return [
-            (object) $dateFilter,
-            (object) $objectsFilter,
-            (object) $accountIdFilter,
-        ];
-    }
-
-    /**
-     * Get aggregations
-     *
-     * @return object[]
-     */
-    protected function getAggregations(): array
-    {
-        $rawAggregation = [
-            'aggregationName' => 'Raw',
-            'limit'           => self::EVENTS_LIMIT,
-            'orderby'         => ['Timestamp, desc'],
-        ];
-
-        return [
-            (object) $rawAggregation,
-        ];
-    }
-
-    /**
      * Parse response
      *
-     * @param AggregateResult $response
+     * @param CursoredResult $response
      * @return object[]
      */
-    protected function parseResponse(AggregateResult $response): array
+    protected function parseResponse(CursoredResult $response): array
     {
-        return $response->getResult()[0]->getData();
+        return $response->getData();
     }
 }
