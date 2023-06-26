@@ -5,21 +5,21 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "v8.1.13",
-        "barryvdh/laravel-dompdf": "v2.0",
-        "docusign/admin-client": "v1.1.0",
+        "php": "v8.2.6",
+        "barryvdh/laravel-dompdf": "v2.0.1",
+        "docusign/admin-client": "v1.3.0",
         "docusign/esign-client": "v6.12",
         "docusign/monitor-client": "^1.1",
-        "guzzlehttp/guzzle": "v7.5.0",
-        "laravel/framework": "v9.42.2 ",
+        "guzzlehttp/guzzle": "v7.7.0",
+        "laravel/framework": "v9.52.9",
         "laravel/passport": "v10.3.3",
-        "laravel/sanctum": "v3.0.1",
-        "laravel/tinker": "v2.7.3",
-        "predis/predis": "^2.0"
+        "laravel/sanctum": "v3.2.5",
+        "laravel/tinker": "v2.8.1",
+        "predis/predis": "^2.2.0"
     },
     "require-dev": {
-        "phpmd/phpmd": "^2.10.0",
-        "squizlabs/php_codesniffer": "3.7.1"
+        "phpmd/phpmd": "^2.13.0",
+        "squizlabs/php_codesniffer": "3.7.2"
     },
     "autoload": {
         "psr-4": {
