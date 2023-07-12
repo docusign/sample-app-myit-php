@@ -22,6 +22,8 @@ MyIT demonstrates the following:
 - Add redirect URI `{ PROTOCOL }://{ DOMAIN }/callback`
 - Create [permission profiles](https://admindemo.docusign.com/authenticate?goTo=roles) with names: Admin, Manager and Employee
 - [PHP 8.1](https://www.php.net/downloads.php)
+- [Docker](https://www.docker.com/) installed and configured in your machine.
+- [Docker Compose](https://getcomposer.org/download/) set up in your PATH environment variable so you can invoke it from any folder.
 
 > For first time use, paste login endpoint URL and grant consent to the app.
 
@@ -36,3 +38,38 @@ Create a copy of the file backend/.env.example, save the copy as backend/.env, a
 - DOCUSIGN_CLIENT_ID - integration key GUID
 - DOCUSIGN_USER_ID - impersonated user ID
 - DOCUSIGN_ACCOUNT_ID - API account ID
+
+## Local installation instructions
+
+1. Build the images using the following command:
+   
+   ```
+   docker compose -f docker-compose-local.yml build
+   ```
+
+2. Start the containers using the following command. Add the `-d` flag to run the process in the background:
+
+   ```
+   docker compose -f docker-compose-local.yml up
+   ```
+
+3. Open a new terminal and set the application key by running the command:
+
+   ```
+   docker exec -it myit_php php artisan key:generate
+   ```
+
+4. Install the database structure using these two commands:
+
+   ```
+   docker exec -it myit_php php artisan migrate --seed
+   docker exec -it myit_php php artisan passport:install
+   ```
+
+5. Clear the cache:
+
+   ```
+   docker exec -it myit_php php artisan cache:clear
+   ```
+
+6. Open a browser to [localhost](http://localhost).
