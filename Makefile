@@ -46,7 +46,7 @@ build-backend:
 	sed '/# DocuSign auth parameters/,+11 d' < backend/.env.example > backend/.env.temp
 	cat backend/.env.temp backend/sec.env > backend/.env && rm backend/.env.temp
 	docker build -t my-it-backend-php:latest -f backend/docker/php/php.Dockerfile ./backend
-	docker build -t my-it-backend-nginx:latest -f backend/docker/nginx/nginx.Dockerfile backend/docker/nginx/
+	docker build -t my-it-backend-nginx:latest -f backend/docker/nginx/nginx.Dockerfile ./backend
 	docker build -t my-it-backend-node:latest -f backend/docker/node/node.Dockerfile ./backend
 	docker tag my-it-backend-php:latest $(registry_name).azurecr.io/my-it-backend-php:$(version)
 	docker tag my-it-backend-nginx:latest $(registry_name).azurecr.io/my-it-backend-nginx:$(version)
