@@ -20,6 +20,6 @@
     "Description": "Please check the employee monitoring instance to verify.",
     "ButtonClose": "Close"
   },
-  "ApiDecription": "<h3>This sample features:</h3><ul><li>Modifying permission profiles</li><li>Creating permission profiles</li><li>Deleting permission profiles</li></ul><h3>Code flow:</h3><p>View source file <a target='_blank' rel='noopener noreferrer' href='https://github.com/docusign/sample-app-myit-php/blob/main/backend/app/Services/DocuSign/PermissionProfileService.php'>eSignUserManagement:getPermissions</a>.</p>"
+  "ApiDecription": "<h3>This sample features:</h3><ul><li>Modifying permission profiles</li><li>Creating permission profiles</li><li>Deleting permission profiles</li></ul><h3>Code flow:</h3><p>View source file <a target='_blank' rel='noopener noreferrer' href='https://github.com/docusign/sample-app-myit-php/blob/main/backend/app/Services/DocuSign/PermissionProfileService.php'>PermissionProfileService.php</a> on GitHub.</p><p>Once the new permission profile is selected by the user, the Admin API is used to modify the employee's permission profile. The permission profile modification request is created using <a target='_blank' rel='noopener noreferrer' href='https://developers.docusign.com/docs/admin-api/reference/usermanagement/esignusermanagement/getpermissions/'>eSignUserManagement:getPermissions</a>.</p>"
 
 }
