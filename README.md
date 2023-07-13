@@ -16,7 +16,7 @@ MyIT demonstrates the following:
 ## Prerequisites
 
 - Create a DocuSign developer [account](https://go.docusign.com/o/sandbox/).
-- Create an application on the [App and keys](https://admindemo.docusign.com/authenticate?goTo=appsAndKeys) page and copy credentials to `backend/.env`:
+- Create an application on the [App and Keys](https://admindemo.docusign.com/authenticate?goTo=appsAndKeys) page and copy credentials to `backend/.env`:
   client ID (integration key), user ID, account ID and copy **RSA private key** to a file `storage/docusign_private.key`.
   This [**video**](https://www.youtube.com/watch?v=GgDqa7-L0yo) demonstrates how to create an integration key (client ID) for a user application like this example.
 - Add redirect URI `{ PROTOCOL }://{ DOMAIN }/callback`
