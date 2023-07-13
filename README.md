@@ -23,7 +23,7 @@ MyIT demonstrates the following:
 - Create [permission profiles](https://admindemo.docusign.com/authenticate?goTo=roles) with names: Admin, Manager and Employee
 - [PHP 8.1](https://www.php.net/downloads.php)
 - [Docker](https://www.docker.com/) installed and configured in your machine.
-- [Docker Compose](https://getcomposer.org/download/) set up in your PATH environment variable so you can invoke it from any folder.
+- [Composer](https://getcomposer.org/download/) set up in your PATH environment variable so you can invoke it from any folder.
 
 > For first time use, paste login endpoint URL and grant consent to the app.
 
