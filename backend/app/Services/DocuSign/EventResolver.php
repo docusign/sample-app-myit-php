@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Services\DocuSign;
-
 use App\Enums\EventsTypesEnum;
 use App\Mappers\EventsMapper;
 use App\Models\Employee;
@@ -14,7 +12,6 @@ use Illuminate\Contracts\Container\CircularDependencyException;
 use Illuminate\Support\Arr;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-
 /**
  * Class EventResolver
  *
@@ -141,18 +138,33 @@ class EventResolver extends BaseMonitorService
 
         return array_filter($events, function (array $event) use ($keyService, $users, $envelopes) {
             $key = $keyService->build($event);
-
-            return match($key) {
-                EventsTypesEnum::USER_UPDATED => in_array(Arr::get($event, 'data')->AffectedUserId, array_keys($users)),
-                EventsTypesEnum::ENVELOPE_SIGNED,
-                EventsTypesEnum::ENVELOPE_SENT,
-                EventsTypesEnum::ENVELOPE_VOIDED,
-                EventsTypesEnum::ENVELOPE_DECLINED => !!$envelopes->where('ext_id', Arr::get($event, 'data')->EnvelopeId)->first(),
-                default => false
+            switch($key) {
+                case EventsTypesEnum::USER_UPDATED:
+                    if (in_array(Arr::get($event, 'data')->AffectedUserId, array_keys($users))) {
+                        return true;
+                    }
+                    break;
+                case EventsTypesEnum::ENVELOPE_SIGNED:
+                    return true;
+                    break;
+                case EventsTypesEnum::ENVELOPE_SENT:
+                    return true;
+                    break;
+                case EventsTypesEnum::ENVELOPE_VOIDED:
+                    return true;
+                    break;
+                case EventsTypesEnum::ENVELOPE_DECLINED:
+                    if (!!$envelopes->where('ext_id', Arr::get($event, 'data')->EnvelopeId)->first()){
+                        return true;
+                    }
+                    break;
+                default:
+                    return false;
             };
+
+            return false;
         });
     }
-
     /**
      * Map events
      *

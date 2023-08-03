@@ -2,26 +2,36 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { 
+  BsPersonFillUp, 
+  BsFillEnvelopePaperHeartFill,
+  BsFillEnvelopePlusFill,
+  BsFillEnvelopeSlashFill,
+  BsFillEnvelopeXFill,
+} from "react-icons/bs";
 import {
-  ALERT_TYPE_SUCCESS,
-  ALERT_TYPE_WARNING,
-  ALERT_TYPE_DANGER,
+  EVENT_USER_UPDATED,
+  EVENT_ENVELOPE_SENT,
+  EVENT_ENVELOPE_SIGNED,
+  EVENT_ENVELOPE_VOIDED,
+  EVENT_ENVELOPE_DECLINED,
 } from "../../../state/constants";
-import alertSuccess from "../../../assets/img/alert-success.png";
-import alertWarning from "../../../assets/img/alert-warning.png";
-import alertDanger from "../../../assets/img/alert-danger.png";
 
 export const AlertList = ({ alerts }) => {
   const { t } = useTranslation("EmployeeMonitoring");
 
   const mapAlertTypeToImg = (alertType) => {
     switch (alertType) {
-      case ALERT_TYPE_SUCCESS:
-        return alertSuccess;
-      case ALERT_TYPE_WARNING:
-        return alertWarning;
-      case ALERT_TYPE_DANGER:
-        return alertDanger;
+      case EVENT_USER_UPDATED:
+        return <BsPersonFillUp/>;
+      case EVENT_ENVELOPE_SIGNED:
+        return <BsFillEnvelopePaperHeartFill/>;
+      case EVENT_ENVELOPE_SENT:
+        return <BsFillEnvelopePlusFill/>;
+      case EVENT_ENVELOPE_VOIDED:
+        return <BsFillEnvelopeSlashFill/>;
+        case EVENT_ENVELOPE_DECLINED:
+          return <BsFillEnvelopeXFill/>;
       default:
         console.log(`Error type '${alertType}' is not defined`);
         return null;
@@ -40,13 +50,13 @@ export const AlertList = ({ alerts }) => {
               {new Intl.DateTimeFormat("en-US", {
                 dateStyle: "short",
                 timeStyle: "medium",
-              }).format(new Date(alert.timestamp))}
+              }).format(new Date(alert.createdAt))}
             </div>
-            <div className="col-lg-1">
-              <img src={mapAlertTypeToImg(alert.type)} alt="" />
+            <div className="col-lg-1 event-icons">
+              {mapAlertTypeToImg(alert.event)}
             </div>
-            <div className="col-lg-4">{alert.user}</div>
             <div className="col-lg-4">{t(alert.localizationKey)}</div>
+            <div className="col-lg-4">{alert.user}</div>
           </div>
         ))}
       </Card.Body>
@@ -59,9 +69,9 @@ AlertList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       user: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
+      event: PropTypes.string.isRequired,
       localizationKey: PropTypes.string.isRequired,
-      timestamp: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
     })
   ),
 };

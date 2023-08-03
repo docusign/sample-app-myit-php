@@ -40,9 +40,9 @@ RequestForm.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       user: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
+      event: PropTypes.string.isRequired,
       localizationKey: PropTypes.string.isRequired,
-      timestamp: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
     })
   ),
   profiles: PropTypes.arrayOf(
