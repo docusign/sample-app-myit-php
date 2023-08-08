@@ -7,6 +7,7 @@ use App\Models\Envelope;
 use DocuSign\Monitor\Api\DataSetApi;
 use DocuSign\Monitor\Client\ApiException;
 use DocuSign\Monitor\Model\CursoredResult;
+use DocuSign\Monitor\Api\DataSetApi\GetStreamOptions;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\CircularDependencyException;
 use Illuminate\Support\Arr;
@@ -32,7 +33,15 @@ class EventResolver extends BaseMonitorService
         $dataSetApi = new DataSetApi($this->apiClient);
         $users = $this->getUsers();
 
-        $result = $dataSetApi->getStream('monitor', '2.0');
+        $options = new GetStreamOptions();
+
+        $currentTime = time();
+        $oneHourAgo = ($currentTime - 3600); 
+
+        $formattedDate = gmdate('Y-m-d\TH:i:s\Z', $oneHourAgo);
+        $options->setCursor($formattedDate);
+
+        $result = $dataSetApi->getStream('monitor', '2.0', $options);
 
         $events = $this->filterEvents($this->parseResponse($result), $users);
 
@@ -83,7 +92,7 @@ class EventResolver extends BaseMonitorService
     protected static function filterEventsByTime(array $events): array
     {
         return array_filter($events, function (array $event) {
-            return strtotime("-1 hour") <= strtotime($event['timestamp']);
+            return strtotime("-24 hour") <= strtotime($event['timestamp']);
         });
     }
 
