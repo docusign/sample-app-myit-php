@@ -6,7 +6,12 @@
     "Email": "Email"
   },
   "AlertList": {
-    "Title": "Monitor Alerts"
+    "Title": "Monitor Alerts",
+    "Envelope_Sent": "Envelope Sent",
+    "Envelope_Signed": "Envelope Signed",
+    "Envelope_Declined": "Envelope Declined",
+    "Envelope_Voided": "Envelope Voided",
+    "User_Updated": "User Updated"
   },
   "Dashboard": {
     "Title": "Dashboard",

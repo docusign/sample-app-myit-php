@@ -16,7 +16,7 @@ const io = socket(server, {
     origin: process.env.CLIENT_URL.split(','),
     credentials: true
   },
-  path: '/ws' 
+  path: '/ws/' 
 });
 
 const redis = new Redis({

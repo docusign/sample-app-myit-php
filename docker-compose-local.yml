@@ -21,7 +21,7 @@ services:
       dockerfile: frontend.Dockerfile
       args:
         REACT_APP_API_BASE_URL: http://localhost/api
-        REACT_APP_WEB_SOCKET_URL: wss://localhost
+        REACT_APP_WEB_SOCKET_URL: ws://localhost
     platform: linux/amd64
     restart: on-failure:5
 
@@ -53,9 +53,9 @@ services:
       dockerfile: docker/node/node.Dockerfile
     container_name: back-node
     environment:
-      - CLIENT_URL='http://localhost:3001,http://localhost:63342'
-      - REDIS_PASSWORD=''
-      - WEBSOCKETS_PORT='3001'
+      - CLIENT_URL=http://localhost:3000,http://localhost:3001,http://localhost:63342
+      - REDIS_PASSWORD=
+      - WEBSOCKETS_PORT=3001
     ports:
       - 3001:3001
 

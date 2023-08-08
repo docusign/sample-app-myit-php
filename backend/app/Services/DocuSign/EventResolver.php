@@ -5,6 +5,7 @@ use App\Mappers\EventsMapper;
 use App\Models\Employee;
 use App\Models\Envelope;
 use DocuSign\Monitor\Api\DataSetApi;
+use DocuSign\Monitor\Api\DataSetApi\GetStreamOptions;
 use DocuSign\Monitor\Client\ApiException;
 use DocuSign\Monitor\Model\CursoredResult;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -32,11 +33,30 @@ class EventResolver extends BaseMonitorService
         $dataSetApi = new DataSetApi($this->apiClient);
         $users = $this->getUsers();
 
-        $result = $dataSetApi->getStream('monitor', '2.0');
+        $options = $this->createStreamOptions();
+
+        $result = $dataSetApi->getStream('monitor', '2.0', $options);
 
         $events = $this->filterEvents($this->parseResponse($result), $users);
 
         return $this->mapEvents($events, $users);
+    }
+
+    /**
+     * Create stream options to get the data for the last hour
+     *
+     * @return GetStreamOptions
+     */
+    protected function createStreamOptions(): GetStreamOptions
+    {
+        $currentTime = time();
+        $oneHourAgo = ($currentTime - 3600); 
+        $formattedDate = gmdate('Y-m-d\TH:i:s\Z', $oneHourAgo);
+
+        $options = new GetStreamOptions();
+        $options->setCursor($formattedDate);
+
+        return $options;
     }
 
     /**
@@ -65,26 +85,10 @@ class EventResolver extends BaseMonitorService
      */
     protected function filterEvents(array $events, array $users): array
     {
-        $events = $this->filterEventsByTime($events);
         $events = $this->filterEventsByAccountId($events);
         $events = $this->filterEventsByActions($events);
 
         return $this->filterByEntities($events, $users);
-    }
-
-    /**
-     * Filter events by time
-     *
-     * @param array $events
-     * @return array
-     * @throws BindingResolutionException
-     * @throws CircularDependencyException
-     */
-    protected static function filterEventsByTime(array $events): array
-    {
-        return array_filter($events, function (array $event) {
-            return strtotime("-1 hour") <= strtotime($event['timestamp']);
-        });
     }
 
     /**

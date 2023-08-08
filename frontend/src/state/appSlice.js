@@ -87,7 +87,6 @@ export const appSlice = createSlice({
     },
     addAlert: (state, action) => {
       const alert = mapIncomingAlert(action.payload, state.users);
-      state.alerts = [];
       state.alerts = [alert, ...state.alerts].sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
@@ -145,9 +144,9 @@ export const appSlice = createSlice({
       .addCase(loadAlertsData.fulfilled, (state, action) => {
         state.loading = LOADING_STATE_IDLE;
         const alertList = action.payload;
-        state.alerts = [];
         state.alerts = [
           ...alertList
+            .filter((a) => a.event === EVENT_USER_UPDATED)
             .map(mapIncomingAlert),
           ...state.alerts.filter(a => a.event !== EVENT_USER_UPDATED),
         ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));

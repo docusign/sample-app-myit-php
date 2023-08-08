@@ -19,7 +19,7 @@ export const EmployeeMonitoring = () => {
     if (appState.loading === LOADING_STATE_IDLE) {
       dispatch(loadAlertsData());
     }
-  }, [appState]);
+  }, []);
 
   const { t } = useTranslation("EmployeeMonitoring");
 

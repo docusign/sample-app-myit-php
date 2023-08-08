@@ -69,7 +69,6 @@ class EventsMapper
                     'event'      => $this->keyService->build($event),
                     'user'       => null,
                     'createdAt'  => $event['timestamp'],
-                    'localizationKey' => $event['country'],
                     'id' => $event['eventId']
                 ]
             ];
@@ -80,7 +79,6 @@ class EventsMapper
                 'event'      => $this->keyService->build($event),
                 'user'       => $name == null ? "" : $name,
                 'createdAt'  => $event['timestamp'],
-                'localizationKey' => $event['country'],
                 'id' => $event['eventId']
             ];
         }, $users);

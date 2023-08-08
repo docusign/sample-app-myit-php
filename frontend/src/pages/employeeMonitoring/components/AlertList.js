@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { 
-  BsPersonFillUp, 
+import {
+  BsPersonFillUp,
   BsFillEnvelopePaperHeartFill,
   BsFillEnvelopePlusFill,
   BsFillEnvelopeSlashFill,
@@ -23,15 +23,15 @@ export const AlertList = ({ alerts }) => {
   const mapAlertTypeToImg = (alertType) => {
     switch (alertType) {
       case EVENT_USER_UPDATED:
-        return <BsPersonFillUp/>;
+        return <BsPersonFillUp />;
       case EVENT_ENVELOPE_SIGNED:
-        return <BsFillEnvelopePaperHeartFill/>;
+        return <BsFillEnvelopePaperHeartFill />;
       case EVENT_ENVELOPE_SENT:
-        return <BsFillEnvelopePlusFill/>;
+        return <BsFillEnvelopePlusFill />;
       case EVENT_ENVELOPE_VOIDED:
-        return <BsFillEnvelopeSlashFill/>;
-        case EVENT_ENVELOPE_DECLINED:
-          return <BsFillEnvelopeXFill/>;
+        return <BsFillEnvelopeSlashFill />;
+      case EVENT_ENVELOPE_DECLINED:
+        return <BsFillEnvelopeXFill />;
       default:
         console.log(`Error type '${alertType}' is not defined`);
         return null;
@@ -52,11 +52,10 @@ export const AlertList = ({ alerts }) => {
                 timeStyle: "medium",
               }).format(new Date(alert.createdAt))}
             </div>
-            <div className="col-lg-1 event-icons">
+            <div className="col-lg-1 event-icons" title={t(`AlertList.${alert.event}`)}>
               {mapAlertTypeToImg(alert.event)}
             </div>
-            <div className="col-lg-4">{t(alert.localizationKey)}</div>
-            <div className="col-lg-4">{alert.user}</div>
+            <div className="offset-lg-2 col-lg-4">{alert.user}</div>
           </div>
         ))}
       </Card.Body>
