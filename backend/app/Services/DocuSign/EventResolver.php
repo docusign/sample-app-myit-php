@@ -74,27 +74,12 @@ class EventResolver extends BaseMonitorService
      */
     protected function filterEvents(array $events, array $users): array
     {
-        $events = $this->filterEventsByTime($events);
         $events = $this->filterEventsByAccountId($events);
         $events = $this->filterEventsByActions($events);
 
         return $this->filterByEntities($events, $users);
     }
 
-    /**
-     * Filter events by time
-     *
-     * @param array $events
-     * @return array
-     * @throws BindingResolutionException
-     * @throws CircularDependencyException
-     */
-    protected static function filterEventsByTime(array $events): array
-    {
-        return array_filter($events, function (array $event) {
-            return strtotime("-24 hour") <= strtotime($event['timestamp']);
-        });
-    }
 
     /**
      * Filter events by account id
