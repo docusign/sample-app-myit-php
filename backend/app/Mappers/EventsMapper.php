@@ -69,6 +69,7 @@ class EventsMapper
                     'event'      => $this->keyService->build($event),
                     'user'       => null,
                     'createdAt'  => $event['timestamp'],
+                    'id' => $event['eventId']
                 ]
             ];
         }
@@ -76,8 +77,9 @@ class EventsMapper
         return array_map(function (string|null $name) use ($event) {
             return [
                 'event'      => $this->keyService->build($event),
-                'user'       => $name,
+                'user'       => $name == null ? "" : $name,
                 'createdAt'  => $event['timestamp'],
+                'id' => $event['eventId']
             ];
         }, $users);
     }
@@ -105,15 +107,25 @@ class EventsMapper
      */
     protected function getUserExtIds(array $event): array
     {
-        return match($this->keyService->build($event)) {
-            EventsTypesEnum::USER_UPDATED => [Arr::get($event, 'data')->AffectedUserId],
-            EventsTypesEnum::ENVELOPE_SIGNED => [Arr::get($event, 'data')->RecipientInfo->UserId],
-            EventsTypesEnum::ENVELOPE_DELETED,
-            EventsTypesEnum::ENVELOPE_VOIDED => null !== Arr::get($event, 'affectedUserId')
-                ? [Arr::get($event, 'affectedUserId')]
-                : [],
-            EventsTypesEnum::ENVELOPE_SENT => array_map(fn ($user) => $user->UserId, Arr::get($event, 'data')->RecipientList),
-            default => [],
-        };
+        switch ($this->keyService->build($event)) {
+            case EventsTypesEnum::USER_UPDATED:
+                return [Arr::get($event, 'data')->AffectedUserId];
+                break;
+            case EventsTypesEnum::ENVELOPE_SIGNED:
+                return [Arr::get($event, 'data')->RecipientInfo->RecipientId];
+                break;
+            case EventsTypesEnum::ENVELOPE_DELETED:
+                return [];
+                break;
+            case EventsTypesEnum::ENVELOPE_VOIDED:
+                return null !== Arr::get($event, 'affectedUserId') ? [Arr::get($event, 'affectedUserId')] : [];
+                break;
+            case EventsTypesEnum::ENVELOPE_SENT:
+                return array_map(fn ($user) => $user->UserId, Arr::get($event, 'data')->RecipientList);
+                break;
+            default:
+                return [];
+                break;
+        }
     }
 }

@@ -7,7 +7,7 @@
     "require": {
         "php": "v8.1.13",
         "barryvdh/laravel-dompdf": "v2.0",
-        "docusign/admin-client": "v1.1.0",
+        "docusign/admin-client": "v1.3.0",
         "docusign/esign-client": "v6.12",
         "docusign/monitor-client": "^1.1",
         "guzzlehttp/guzzle": "v7.5.0",
