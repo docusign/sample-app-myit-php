@@ -77,7 +77,7 @@ class DocumentsMapper
                 'email'           => $row['email'],
                 'name'            => $row['name'],
                 'recipient_id'    => $row['id'],
-                'routing_order'   => $row['id'],
+                'routing_order'   => 1,
                 'recipient_type'  => 'signer',
                 'delivery_method' => 'email',
                 'status'          => 'created',

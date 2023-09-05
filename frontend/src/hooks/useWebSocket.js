@@ -6,9 +6,10 @@ export const useWebSocket = (url) => {
   const [connected, setConnected] = useState(false);
 
   const connect = (channel, callback) => {
-    socket.current = io.connect(url, {
-      path: "/ws/",
-      transports: ["websocket", "polling"],
+
+    socket.current = io(url, {
+      transports: ['websocket'],
+      path: '/ws/'
     });
 
     socket.current.on("connect_error", (err) => {
