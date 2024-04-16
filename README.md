@@ -2,20 +2,20 @@
 
 ## Introduction
 
-MyIT is a DocuSign sample application written in PHP (server) and React (client).
+MyIT is a Docusign sample application written in PHP (server) and React (client).
 
 MyIT demonstrates the following:
 
-1. **Authentication** with DocuSign via [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
+1. **Authentication** with Docusign via [JSON Web Token (JWT) Grant](https://developers.docusign.com/platform/auth/jwt/).
 2. **Bulk send of multiple envelopes:**
-   This example uses the DocuSign [eSignature REST API](https://developers.docusign.com/docs/esign-rest-api/) to [Bulk Send](https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/) multiple envelopes based on PDF document template, and fills data dynamically.
+   This example uses the Docusign [eSignature REST API](https://developers.docusign.com/docs/esign-rest-api/) to [Bulk Send](https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/) multiple envelopes based on PDF document template, and fills data dynamically.
 3. **Bulk assignment of permission profiles to employees:**
-   This example uses the DocuSign [DocuSign Admin API](https://developers.docusign.com/docs/admin-api/) to [Update Users'](https://developers.docusign.com/docs/admin-api/reference/usermanagement/esignusermanagement/updateuser/) permission profiles in a single request.
+   This example uses the Docusign [DocuSign Admin API](https://developers.docusign.com/docs/admin-api/) to [Update Users'](https://developers.docusign.com/docs/admin-api/reference/usermanagement/esignusermanagement/updateuser/) permission profiles in a single request.
 
 
 ## Prerequisites
 
-- Create a DocuSign developer [account](https://go.docusign.com/o/sandbox/).
+- Create a Docusign developer [account](https://go.docusign.com/o/sandbox/).
 - Create an application on the [Apps and Keys](https://admindemo.docusign.com/authenticate?goTo=appsAndKeys) page and copy credentials to `backend/.env`:
   client ID (integration key), user ID, account ID and copy **RSA private key** to a file `storage/docusign_private.key`.
   This [**video**](https://www.youtube.com/watch?v=GgDqa7-L0yo) demonstrates how to create an integration key (client ID) for a user application like this example.
