@@ -10,7 +10,7 @@ MyIT demonstrates the following:
 2. **Bulk send of multiple envelopes:**
    This example uses the Docusign [eSignature REST API](https://developers.docusign.com/docs/esign-rest-api/) to [Bulk Send](https://developers.docusign.com/docs/esign-rest-api/reference/bulkenvelopes/bulksend/) multiple envelopes based on PDF document template, and fills data dynamically.
 3. **Bulk assignment of permission profiles to employees:**
-   This example uses the Docusign [DocuSign Admin API](https://developers.docusign.com/docs/admin-api/) to [Update Users'](https://developers.docusign.com/docs/admin-api/reference/usermanagement/esignusermanagement/updateuser/) permission profiles in a single request.
+   This example uses the [DocuSign Admin API](https://developers.docusign.com/docs/admin-api/) to [Update Users'](https://developers.docusign.com/docs/admin-api/reference/usermanagement/esignusermanagement/updateuser/) permission profiles in a single request.
 
 
 ## Prerequisites
