@@ -7,12 +7,12 @@
     "require": {
         "php": "v8.1.13",
         "barryvdh/laravel-dompdf": "v2.0",
-        "docusign/admin-client": "v1.3.0",
-        "docusign/esign-client": "v6.12",
-        "docusign/monitor-client": "^1.1",
+        "docusign/admin-client": "v1.4.2",
+        "docusign/esign-client": "v7.0.0-rc1",
+        "docusign/monitor-client": "v1.2.1",
         "guzzlehttp/guzzle": "v7.7.0",
         "laravel/framework": "v9.52.9",
-        "laravel/passport": "v10.3.3",
+        "laravel/passport": "v11.0.0",
         "laravel/sanctum": "v3.2.5",
         "laravel/tinker": "v2.8.1",
         "predis/predis": "^2.2.0"
