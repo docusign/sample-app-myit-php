@@ -8,7 +8,7 @@
   "Card1": {
     "Title": "Equipment and software approval",
     "Description": "<p style='margin-top: 33px;'>Assign software and equipment to your employees.</p>",
-    "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>Docusign Features</h4></div><ul class='custom-list'><li>Embedded signing and sending</li><li>Conditional recipients</li><li>Bulk sending</li></ul>",
+    "Features": "<div class='text-center'><h4 class='h4 card-info-list-title'>Docusign Features</h4></div><ul class='custom-list'><li>Remote signing and sending</li><li>Conditional recipients</li><li>Bulk sending</li></ul>",
     "Button": "Get Started"
   },
   "Card2": {
